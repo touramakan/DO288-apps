@@ -6,7 +6,7 @@ pipeline {
     agent {
       node {
         //TODO: Add label for the Maven jenkins agent
-	label:master
+	label 'maven'
       }
     }
 
@@ -84,6 +84,10 @@ pipeline {
                 }
                 // TODO: Create a new OpenShift application based on the ${APP_NAME}:latest image stream
                 // TODO: Expose the ${APP_NAME} service for external access
+		sh '''
+			oc new-app --name ${APP_NAME} --as-deployment-config ${APP_NAME}:latest
+			oc expose svc/${APP_NAME}
+		'''
             }
         }
 
