@@ -6,15 +6,16 @@ pipeline {
     agent {
       node {
         //TODO: Add label for the Maven jenkins agent
+	label:master
       }
     }
 
     environment {
         //TODO: Customize these variables for your environment
-        DEV_PROJECT = "youruser-movies-dev"
-        STAGE_PROJECT = "youruser-movies-stage"
-        APP_GIT_URL = "https://github.com/youruser/DO288-apps"
-        NEXUS_SERVER = "http://nexus-common.apps.cluster.domain.example.com/repository/java"
+        DEV_PROJECT = "my-movies-dev"
+        STAGE_PROJECT = "my-movies-stage"
+        APP_GIT_URL = "https://github.com/ite-sfofana/DO288-apps"
+        NEXUS_SERVER = "http://repo1.maven.org/maven2"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
         APP_NAME = "movies"
@@ -115,7 +116,7 @@ pipeline {
                 echo '### Creating a new app in Staging ###'
                 // TODO: Create a new app in staging and expose the service
             }
-        }
+        }:
 
         stage('Wait for deployment in Staging') {
             steps {
