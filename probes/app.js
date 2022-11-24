@@ -19,7 +19,7 @@ route.get('/', function(req, res) {
 
 
 //Serves all the request which includes /images in the url from Images folder
-app.use('/download', express.static(__dirname + '/download'));
+route.use('/download', express.static(__dirname + '/download'));
 
 // A route that returns readiness status
 // simulates readiness 30 seconds after start up
