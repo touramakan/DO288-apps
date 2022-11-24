@@ -4,6 +4,7 @@ var express = require('express'),
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
+app.use(express.static('public'));
 var route = express.Router();
 
 // global var to track app health
@@ -15,6 +16,10 @@ app.use('/', route);
 route.get('/', function(req, res) {
     res.send('Hello! This is the index page for the app.\n');
 });
+
+
+//Serves all the request which includes /images in the url from Images folder
+app.use('/download', express.static(__dirname + '/download'));
 
 // A route that returns readiness status
 // simulates readiness 30 seconds after start up
