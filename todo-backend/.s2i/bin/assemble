@@ -5,7 +5,7 @@ echo "Peforming the S2I build..."
 /usr/libexec/s2i/assemble
 rc=$?
 if [ $rc -eq 0 ]; then
-    echo "Recording successful build on the life cycle management system..."
+    echo "Recording successful build on the standard life cycle management system...mocked until we are done!!!"
 else
     echo "Not calling the life cycle management system: S2I build failed!"
 fi
